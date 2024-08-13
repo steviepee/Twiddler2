@@ -60,7 +60,7 @@ $body.append('<div id="twid-up"><div id="twidButt"></div><button id="twid-more">
 
 let $twidMore = ('#twid-more')
 
-$($twidMore).css( 'background-color', 'Blue')
+$($twidMore).css( 'background-color', 'blue')
 $($twidMore).css( 'color', 'yellow')
 $($twidMore).css( 'padding', '10px 5px')
 $($twidMore).css( 'font-size', '24px')
@@ -78,7 +78,7 @@ $("#twid-up").css( 'justify-content', 'center')
 
 ////////////////////////////////////////////////////////////
 
- //DELIVER OWN TWID BUTTON
+ //MAKE A  TWID BUTTON
 
   $twiddleButt = $("");
 
@@ -98,7 +98,7 @@ $body.append('<div id="myTwid"></div>')
 
 $myTwid = $('#myTwid');
 
-$myTwid.append("<form id='twidAdd'><input type='text' id='speak' value=''/ ><div class='butt-spacer'></div><button type='button' id='twiddle'>Twiddle your fingers</button></form>")
+$myTwid.append("<form id='twidAdd'><input type='text/ ><div class='butt-spacer'></div><button type='button' id='twiddle'>Twiddle your fingers</button></form>")
 
 $($myTwid).css( 'display', 'flex')
 $($myTwid).css( 'align-items', 'center')
@@ -107,16 +107,16 @@ $($myTwid).css( 'height', '100px')
 
 $('#twidAdd').css( 'padding', '12px 20px');
 $('#twidAdd').css( 'margin', '80px 0');
-$('#twidAdd').css( 'width', '2500px');
+$('#twidAdd').css( 'width', '500px');
 $('#twidAdd').css( 'align-items','center')
 
-$('#speak').css('width', '50%')
+//$('#speak').css('width', '50%')
 
-$('#twiddle').css('width', '100%')
+$('#twiddle').css('width', '50%')
 $('#twiddle').css( 'background-color', 'maroon')
 $('#twiddle').css( 'padding', '15px 32px')
 $('#twiddle').css( 'color', 'gold')
-$('#twiddle').css( 'font-family', 'cursive')
+$('#twiddle').css( 'font-family', 'comic sans')
 $('#twiddle').css( 'font-size', '25px')
 $('#twiddle').css( 'border-radius', '40px')
 
@@ -162,7 +162,7 @@ $(document).ready(function(){
    
     
 
-      $tweet.append($twidTime).append($thisMoment)
+      $twid.append($twidTime).append($thisMoment)
       
       return $twid
       
