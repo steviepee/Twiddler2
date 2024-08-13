@@ -1,122 +1,502 @@
-
 $(document).ready(() => {
   const $body = $('body');
-  $body.html('');//clear
+  $body.html('');//clears the body
 
-  // const $twids = streams.home.map((tweet) => {
-  //   const $twid = $('<div class= oneTwid></div>');
-  //   const text = `@${tweet.user}: ${tweet.message}`;
-
-  //   $tweet.text(text);
-
-  //   return $tweet;
-  // });
-  // $body.append($tweets);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//....................................................................................................................................................//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/******************************************************************************************************** */
-////////////////////////////////////////////  TITLE BAR!  //////////////////////////////////////////////////
-/******************************************************************************************************** */
+//TWEET DIV STYLE
 
-console.log("hello")
-//TITLE STYLE
-let $title = $("<div><h1 class='site-title' style='display:none'>TWIDDLER</h1></div>")
+$($body).css('background-color', 'purple')
+$body.append("<div id='titular'></div><div id='twidSpace'></div>")
+let $twidSpace = $('#twidSpace');
 
+$($twidSpace).css( 'background-color', 'purple')
+$($twidSpace).css( 'opacity', '0.')
+$($twidSpace).css( 'border-radius', '4px 4px 4px 4px')
+$($twidSpace).css( 'font-size', '12px')
+$($twidSpace).css( 'font-weight', 'bold')
+$($twidSpace).css( 'padding', '10px 7px 5px')
+$($twidSpace).css( 'display', 'block')
+$($twidSpace).css( 'height', '700px')
+$($twidSpace).css( 'overflow', 'scroll');
+$($twidSpace).css( 'padding', '25px 25px 25px 25px');
+$($twidSpace).css( 'margin', 'auto')
+$($twidSpace).css( 'width', '500px')
 
-$body.append($title);
-$title.css('position', 'relative');
-$title.css('text-align', 'center');
-$title.css('font-family', 'times');
-$title.css('margin', '80px');
+////////////////////////////////////////////////////////////
 
-$('h1').delay(1000);
-$('.site-title').fadeIn(3000);;
+////////////////////////////////////////////////////////////
 
-$title.css('color', 'green');
-
-$("h3").css('margin', '400px');
-$("h3").css('position', 'absolute');
-$("h3").css('top', '66%');
-$("h3").css('left', '48%');
-
-
-
-/************************************************************************************** */
-////////////////////////////////////////TWIDITUP!!////////////////////////////////////////
-/************************************************************************************** */
+ //TITLE STYLE
+ let $title = $("<div><h1 class='site-title'>TWIDDLER</h1><h3 class='twid-title'>Get Cha Twid on!</h3><div>")
 
 
-$body.append("<div id= 'addTwids'><button id= twidAdd>Twid it Up!!</button></div>")
-
-$("#twidAdd").css("background-color", "blue");
-$("#twidAdd").css("color", "yellow");
-$("#twidAdd").css("padding", "10px 20px");
-$("#twidAdd").css("width", "125px");
-$("#twidAdd").css("position", "relative");
-$("#twidAdd").css("padding", "10px 10px 10px 10px");
-$("#twidAdd").css("font", "times new roman");
-$("#twidAdd").css("border-radius", "3px");
-
-/************************************************************************************* */
-////////////////////////////////// TWIDSPACE CSS  //////////////////////////////////////
-/************************************************************************************ */
+ $body.prepend($title);
+ $title.css('position', 'relative')
+ $title.css('text-align', 'center')
+ $title.css('font-family', 'comic sans')
+ $title.css('font-size', '80px')
+ 
+ $title.css('color', 'blue')
+ $("h3").css('color', 'yellow')
 
 
-$($body).css('background-color', '#ffccff');
-$body.append("<div id='titular'></div><div id='tweetSpace'></div>");
-let $tweetSpace = $('#tweetSpace');
+ $("h3").css('margin', '4px')
+ $("h3").css('position', 'center')
+ $("h3").css('top', '66%')
+ $("h3").css('left', '48%')
 
-$($tweetSpace).css( 'background-color', '#F5F5F5');
-$($tweetSpace).css( 'border', '1px solid #DDDDDD');
-$($tweetSpace).css( 'border-radius', '4px 4px 4px 4px');
-$($tweetSpace).css( 'font-size', '12px');
-$($tweetSpace).css( 'font-weight', 'bold');
-$($tweetSpace).css( 'padding', '10px 7px 5px');
-$($tweetSpace).css( 'display', 'block');
-$($tweetSpace).css( 'height', '200px');
-$($tweetSpace).css( 'overflow', 'scroll');
-$($tweetSpace).css( 'padding', '25px 25px 25px 25px');
-$($tweetSpace).css( 'margin', 'auto');
-$($tweetSpace).css( 'width', '500px');
+////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
 
 
+//MORE TWEETS BUTTON
+
+$body.append('<div id="twid-up"><div id="twidButt"></div><button id="twid-more">Twid it up!</button></div>')
+
+let $twidMore = ('#twid-more')
+
+$($twidMore).css( 'background-color', 'Blue')
+$($twidMore).css( 'color', 'yellow')
+$($twidMore).css( 'padding', '10px 5px')
+$($twidMore).css( 'font-size', '24px')
+$($twidMore).css( 'border-radius', '40px')
+$($twidMore).css( 'font-family', 'comic sans')
+$($twidMore).css( 'position', 'relative')
+$($twidMore).css( 'width', '500px')
+$($twidMore).css( 'padding', '25px 25px 25px 25px')
+
+$("#twid-up").css( 'display', 'flex')
+$("#twid-up").css( 'align-items', 'center')
+$("#twid-up").css( 'justify-content', 'center')
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+ //DELIVER OWN TWID BUTTON
+
+  $twiddleButt = $("");
+
+  $('#twid-more').click(function(){
+    $twidSpace.append(makeTwids())
+    $($twidSpace).animate({scrollTop: $($twidSpace).prop('scrollHeight')}, 100);
+  })
 
 
+////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////
 
+//Twid Input Styling
 
-/*users is an array of strings -- all the usernames that you're following.
-streams is an object with two properties, users and home.
-streams.home is an array of all tweets from all the users you're following.
-streams.users is an object with properties for each user.  */
-const $twids = streams.home;/*array */
-const $users = streams.users;/**(.username) will get you to their page */
-const $divs = document.getElementsByTagName('div');
+$body.append('<div id="myTwid"></div>')
 
+$myTwid = $('#myTwid');
 
+$myTwid.append("<form id='twidAdd'><input type='text' id='speak' value=''/ ><div class='butt-spacer'></div><button type='button' id='twiddle'>Twiddle your fingers</button></form>")
 
-//create a function to add twids
-const makeTwids= () => {
-  let $twidSet = $twids.map((twid) => {
-    const $twid = $('<div class= "oneTwid"></div>');
-    const $twidUser = "<div class= 'user'>" +"<h3>" + "<b>@" + twid.user + "::</b>" + "</h3>" + /*add hyperlink to profile? "See more"*/"</div>"
-    const $message = ( + "<div class= message" + twid.message + "</div>");
-    
-    $twid.append($twidUser);
-    $twid.append($message);
+$($myTwid).css( 'display', 'flex')
+$($myTwid).css( 'align-items', 'center')
+$($myTwid).css( 'justify-content', 'center')
+$($myTwid).css( 'height', '100px')
 
-    return $twid.append("<div id= 'timestamp'>", moment().calendar()).append("- - - - - - - - ", moment().format()).append("</div>").append("<div id= 'try'><</div>");
+$('#twidAdd').css( 'padding', '12px 20px');
+$('#twidAdd').css( 'margin', '80px 0');
+$('#twidAdd').css( 'width', '2500px');
+$('#twidAdd').css( 'align-items','center')
 
+$('#speak').css('width', '50%')
+
+$('#twiddle').css('width', '100%')
+$('#twiddle').css( 'background-color', 'maroon')
+$('#twiddle').css( 'padding', '15px 32px')
+$('#twiddle').css( 'color', 'gold')
+$('#twiddle').css( 'font-family', 'cursive')
+$('#twiddle').css( 'font-size', '25px')
+$('#twiddle').css( 'border-radius', '40px')
+
+$('#twid-up').prepend($("<div class='butt-spacer'></div>"))
+
+$("#twidButt").css('margin-top', '15%')
+
+$('.butt-spacer').css('height', '4px')
+
+$('#twiddle').css
+$('#twiddle').css
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+
+$(document).ready(function(){
+  $twiddleButt.click(function(){
+      $("#twidAdd").submit();
+       // Submit the form
   });
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//....................................................................................................................................................//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ //FUNCTION MAKE TWIDS
 
 
+  function makeTwids(){
+
+    const $twids = streams.home.map((twid) => {
+      const $twid = $('<div class="single-twid"></div>');
+
+      let $twidUser = $("<div class='username'>" +"<h2> @"+ twid.user + ":</h2>" + "</div>")
+
+      $twid.append($twidUser)
+      $twid.append("<div class='twid-mess'>" + twid.message +"</div>");
+      const $twidTime = $("<div class='twid-time'>" +"<div class='time-since'> - - - just now . . . . . . . . " + moment().calendar() + "</div>")
+
+      const $thisMoment = $("<div class='this-moment'>"+ moment().format() + "</div>").hide()
+   
+    
+
+      $tweet.append($twidTime).append($thisMoment)
+      
+      return $twid
+      
+
+    });
+
+    $twidSpace.append($twids)
+    $($twidSpace)
+    $singleTwid = $('.single-twid');
+    $('.username').css('color', 'yellow');
+    $('.username').css('font-size', '15px')
+    const $userName = $(".username")
+
+
+////////////////////////////////////////////////////////////
+//........................................................//
+////////////////////////////////////////////////////////////
+
+//CLICK ON OTHER USERNAME
+$($userName).on('click', function(){
+
+currentUser = this;
+ 
+  $("#title-spacer").append('<div id="user-profile">')
+  $('#user-profile').prepend('<button id="close-butt">X</button>')
+  $('#twidSpace').hide()
+
+  $("#twid-more").prop(
+    "disabled",
+    true
+);
+
+$("#twiddle").prop(
+  "disabled",
+
+  true
+);
+
+// X CLOSE BUTTON STYLE
+  $("#close-butt").css( 'background-color', '#555555')
+  //  $("#close-butt").css( 'padding', '10px 10px')
+  $("#close-butt").css( 'font-size', '12px')
+  $("#close-butt").css( 'color', 'white')
+  $("#close-butt").css( 'border-radius', '4px')
+  $("#close-butt").css( 'font-family', 'cursive')
+  $("#close-butt").css( 'position', 'fixed')
+  $("#close-butt").css( 'top', '100px')
+  $("#close-butt").css( 'right', '67%')
+  $("#close-butt").css( 'transform', 'translate(-50%, -50%')
+   $("#close-butt").css( 'margin', 'auto')
+  //  $("#close-butt").css( 'width', '5%')
+  //  $("#close-butt").css( 'padding', '8px 8px 8px 8px')
+
+
+//closes the profile window
+  $('#close-butt').on('click', function(){
+    $("#user-profile").remove();
+    $("#twidSpace").show();
+    $("#twid-more").prop(
+      "disabled",
+      false
+      );
+      $("#twiddle").prop(
+        "disabled",
+        false
+    );
+  })
+
+///////////////////////////////////////
+  //SELECTED USER'S PROFILE STYLING
+  // console.log("!!! User Profile !!!", $('#user-profile'))
+  $('#user-profile').css( 'background-color', '#F5F5F5')
+  $('#user-profile').css( 'border', '1px solid #DDDDDD')
+  $('#user-profile').css( 'border-radius', '4px 4px 4px 4px')
+  $('#user-profile').css( 'font-size', '12px')
+  $('#user-profile').css( 'font-weight', 'bold')
+  $('#user-profile').css( 'padding', '10px 7px 5px')
+  $('#user-profile').css( 'display', 'block')
+  $('#user-profile').css( 'height', '200px')
+  $('#user-profile').css( 'overflow', 'scroll');
+  $('#user-profile').css( 'padding', '25px 25px 25px 25px');
+  $('#user-profile').css( 'margin', 'auto')
+  $('#user-profile').css( 'width', '500px')
+  
+
+
+  ////////////////////////////////////////////////////////
+  //SELECTED USER'S TWID HISTORY
+
+  //loop through all the single tweets
+  for (let i = 0; i < $('.single-twid').length; i++){
+
+    if (currentUser.innerText.slice(2, -1) === $('.username')[i].innerText.slice(2, -1)){
+     
+
+      let $fullTwid = $(".single-twid")[i].innerText
+
+      let twidArr = $fullTwid.split(":")
+      let choppedUserName = twidArr.shift()
+      let choppedTime = twidArr[1].split("2024")
+      
+      
+      $fullTwid = twidArr[0] + ":" + choppedTime[0]
+      
+      $("#user-profile")
+      .append($("<div id='chop-user'><h2>" + choppedUserName + "</h2></div>")
+      .css('color', 'gold'))
+      .append("<p>")
+      //.append($fullTwid)
+      .append(twidArr[0] + ":" + choppedTime[0])
+      .append("</p>")
+      .append("<div> - - - - - - </div>")
+
+      
+
+
+    }
+
+    
+
+  
+  }
+ 
+})
+
+  }
+makeTwids()
+
+////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+//TWIDDLE BUTTON
+
+$twiddleButt = $("");
+$myTwid.append($twiddleButt)
+
+//click the button:
+
+  function makeOwnTwids(){
+
+    $('#twiddle').on('click',function(event){
+      event.preventDefault();
+      // makeTwids()
+
+      const $inputString = $('#speak').val();
+      const $dudeTwidder = $("<div class='youser-name'>" +"<h2> @YOU:</h2></div>")
+      const $userTwid = $("<div class='your-string'>"+ $inputString + " " + "</div>")
+      const $twidTime = $("<div class='twid-time'>" + (moment().startOf('hour').fromNow()) + " . . . . . . . . " + moment().calendar() + "</div>")
+      const $thisMoment = $("<div class='this-moment'>"+ moment().format() + "</div>").hide()
+      $('#twidSpace').append($dudeTwidder)
+      .append($userTwid)
+      .append($twidTime)
+      .append($thisMoment)
+      // .append(" - - - - - ")
+      // .append(moment().calendar())
+      // .append(" - - - ", moment().format());
+
+      $('.youser-name').css('color', 'orange');
+
+      $($twidSpace).animate({scrollTop: $($twidSpace).prop('scrollHeight')}, 100);
+    });
+  };
+makeOwnTwids();
+
+////////////////////////////////////////////////////////////
+
+//........................................................//
+
+////////////////////////////////////////////////////////////
+
+//YOUR OWN PROFILE 
+
+ $($("#twidSpace")).on('click', '.youser-name' ,function(){
+   console.log("you clicked")
+  
+   $("#twidSpace").append('<div id="user-profile">')
+   $('#user-profile').prepend('<button id="close-butt">X</button>')
+   $('#twidSpace').hide()
+
+
+   ///////////////
+   
+ 
+
+  ////////////////
+
+   $("#twid-more").prop(
+     "disabled",
+     true
+ );
+
+ $("#twiddle").prop(
+   "disabled",
+
+   true
+);
+////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////
+//YOUR OWN TWID HISTORY
+
+// X CLOSE BUTTON STYLE
+$("#close-butt").css( 'background-color', '#555555')
+//  $("#close-butt").css( 'padding', '10px 10px')
+$("#close-butt").css( 'font-size', '12px')
+$("#close-butt").css( 'color', 'white')
+$("#close-butt").css( 'border-radius', '4px')
+$("#close-butt").css( 'font-family', 'cursive')
+$("#close-butt").css( 'position', 'fixed')
+$("#close-butt").css( 'top', '100px')
+$("#close-butt").css( 'right', '67%')
+$("#close-butt").css( 'transform', 'translate(-50%, -50%')
+$("#close-butt").css( 'margin', 'auto')
+//  $("#close-butt").css( 'width', '5%')
+//  $("#close-butt").css( 'padding', '8px 8px 8px 8px')
+
+
+//closes the profile window
+$('#close-butt').on('click', function(){
+ $("#user-profile").remove();
+ $("#twidSpace").show();
+ $("#twidSpace").prop(
+   "disabled",
+   false
+   );
+   $("#twiddle").prop(
+     "disabled",
+     false
+ );
+})
+
+
+
+///////////////////////////////////////
+//YOUR OWN USER PROFILE STYLING
+$('#user-profile').css( 'background-color', '#F5F5F5')
+$('#user-profile').css( 'border', '1px solid #DDDDDD')
+$('#user-profile').css( 'border-radius', '4px 4px 4px 4px')
+$('#user-profile').css( 'font-size', '12px')
+$('#user-profile').css( 'font-weight', 'bold')
+$('#user-profile').css( 'padding', '10px 7px 5px')
+$('#user-profile').css( 'display', 'block')
+$('#user-profile').css( 'height', '200px')
+$('#user-profile').css( 'overflow', 'scroll');
+$('#user-profile').css( 'padding', '25px 25px 25px 25px');
+$('#user-profile').css( 'margin', 'auto')
+$('#user-profile').css( 'width', '500px')
+
+
+////////////////////////////////////////////
+//ATTACHING TO USER PROFILE
+
+let $userName = $(".youser-name").clone()
+
+let $twidClone = $(".your-string").clone()
+//console.log(".YOUsername", $(".youser-name"))
+
+let $timeClone = $(".tweet-time").clone()
+
+$("#user-profile").append($($userName))
+
+//console.log("#USER PROFILE", $("#user-profile"))
+$("#user-profile").append($($twidClone))
+$("#user-profile").prepend($($userName))
+
+for (let i = 0; i < $userName.length; i++){
+  $($userName[i]).append($($twidClone[i])).append($($timeClone)[i])
 }
+$($twidClone).css("color", "black")
+$($timeClone).css("color", "black")
 
 
-//$twidUser on click twidSpace.hide, twids.filter().show;
-  //console.log(document.getElementsByTagName('div'));
-//console.log(getTwids(getTwids(twids)));
-//console.log(twids.map((twid) => twid.appendChild(`${twid.created_at}`)));
-//console.log(window.location.pathname);
+ })
+
+
+
+
+
+
+
+
+
+
+ let $timeSince = $('.time-since')
+
+let $thisMoment = $(".this-moment")
+
+
+// $(".current-time").hide()
+
+console.log(moment(), Date.parse($thisMoment[0].innerText))
+
+
+setInterval(function updateTimes (){
+
+  $timeSince = $('.time-since')
+  $thisMoment = $(".this-moment")
+
+  for (let i = 0; i < $timeSince.length; i++){
+    console.log($timeSince[i])
+    let newTime = moment().diff($thisMoment[i].innerText)
+    console.log(newTime)
+
+    let timeInMinutes = Math.floor(newTime/1000/60)
+
+    if (timeInMinutes < 1){
+      $timeSince[i].innerText = " - - - less than a minute ago . . . . . . . . " + moment().calendar()
+    } else if (timeInMinutes === 1) {
+      $timeSince[i].innerText = " - - - 1 minute ago . . . . . . . . " + moment().calendar()
+    } else if (timeInMinutes < 60){
+      $timeSince[i].innerText = " - - - " + Math.floor(newTime/1000/60) + " minutes ago. . . . . . . . " + moment().calendar()
+    } else if (timeInMinutes >= 60 && timeInMinutes < 120){
+      $timeSince[i].innerText = " - - - 1 hour ago. . . . . . . . " + moment().calendar()
+    } else {
+      $timeSince[i].innerText = " - - - " + Math.floor(newTime/1000/60/60) + " hours ago. . . . . . . . " + moment().calendar()
+    }
+
+    
+
+
+  }
+}, 10000)
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//....................................................................................................................................................//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+$('.chop-user').css("color", "gold")
+
+///////////////////////////////////////////////
+
+///////////////////////////////////////////////
 
 });
