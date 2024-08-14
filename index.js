@@ -1,6 +1,6 @@
 $(document).ready(() => {
   const $body = $('body');
-  $body.html('');//clears the body
+  $body.html('');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////  TWIDSPACE!   //////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ $($myTwid).css( 'height', '250px')
 $('#twidAdd').css( 'padding', '12px 20px');
 $('#twidAdd').css( 'margin', '8px 0');
 $('#twidAdd').css( 'width', '500px');
-//$('#twidAdd').css( 'align-items','center')
+
 
 $('#speak').css('width', '50%')
 
@@ -127,7 +127,7 @@ $('#twiddle').css
 $(document).ready(function(){
   $twiddleButt.click(function(){
       $("#twidAdd").submit();
-       // Submit the form
+       
   });
 });
 
@@ -198,7 +198,7 @@ $("#twiddle").prop(
 
 /*********************************  STYLES  ******************************/
   $("#close-butt").css( 'background-color', 'blue')
-  //  $("#close-butt").css( 'padding', '10px 10px')
+  /
   $("#close-butt").css( 'font-size', '20px')
   $("#close-butt").css( 'color', 'gold')
   $("#close-butt").css( 'border-radius', '4px')
@@ -208,11 +208,9 @@ $("#twiddle").prop(
   $("#close-butt").css( 'right', '67%')
   $("#close-butt").css( 'transform', 'translate(-50%, -50%')
    $("#close-butt").css( 'margin', 'auto')
-  //  $("#close-butt").css( 'width', '5%')
-  //  $("#close-butt").css( 'padding', '8px 8px 8px 8px')
 
 
-//closes the profile window
+
   $('#close-butt').on('click', function(){
     $("#user-profile").remove();
     $("#twidSpace").show();
@@ -226,9 +224,6 @@ $("#twiddle").prop(
     );
   })
 
-///////////////////////////////////////
-  //SELECTED USER'S PROFILE STYLING
-  // console.log("!!! User Profile !!!", $('#user-profile'))
   $('#user-profile').css( 'background-color', 'purple')
   $('#user-profile').css( 'border', '1px solid #DDDDDD')
   $('#user-profile').css( 'border-radius', '4px 4px 4px 4px')
@@ -245,8 +240,8 @@ $("#twiddle").prop(
 
 
   ////////////////////////////////////////////////////////
-  //SELECTED USER'S TWID HISTORY
-
+  /////////////////////  HISTORY  ///////////////////////
+  ///////////////////////////////////////////////////////
   //loop through all the single tweets
   for (let i = 0; i < $('.single-twid').length; i++){
 
@@ -287,33 +282,27 @@ $("#twiddle").prop(
 makeTwids()
 
 ////////////////////////////////////////////////////////////
-
+///////////////////  TWIDDLE  /////////////////////////////
 ////////////////////////////////////////////////////////////
-//TWIDDLE BUTTON
 
 $twiddleButt = $("");
 $myTwid.append($twiddleButt)
-
-//click the button:
 
   function makeOwnTwids(){
 
     $('#twiddle').on('click',function(event){
       event.preventDefault();
-      // makeTwids()
 
       const $inputString = $('#speak').val();
       const $dudeTwidder = $("<div class='youser-name'>" +"<h2> @YOU:</h2></div>")
       const $userTwid = $("<div class='your-string'>"+ $inputString + " " + "</div>")
-      const $twidTime = $("<div class='twid-time'>" +"<div class='time-since'> - - - just now - - - - - - - - - - - " + moment().calendar() + "</div>")
+      const $twidTime = $("<div class='twid-time'>" +"<div class='time-since'> - - - just now                          " + moment().calendar() + "</div>")
       const $thisMoment = $("<div class='this-moment'>"+ moment().format() + "</div>").hide()
       $('#twidSpace').append($dudeTwidder)
       .append($userTwid)
       .append($twidTime)
       .append($thisMoment)
-      // .append(" - - - - - ")
-      // .append(moment().calendar())
-      // .append(" - - - ", moment().format());
+  
 
       $('.youser-name').css('color', 'green');
 
@@ -326,9 +315,7 @@ $myTwid.append($twiddleButt)
 makeOwnTwids();
 
 ////////////////////////////////////////////////////////////
-
-//........................................................//
-
+//////////////// YOU, SIR //////////////////////////////////
 ////////////////////////////////////////////////////////////
 
 //YOUR OWN PROFILE 
@@ -340,11 +327,6 @@ makeOwnTwids();
    $('#twidSpace').hide()
 
 
-   ///////////////
-   
- 
-
-  ////////////////
 
    $("#twid-more").prop(
      "disabled",
@@ -361,7 +343,6 @@ makeOwnTwids();
 ////////////////////////////////////////////////////////
 
 $("#close-butt").css( 'background-color', 'blue')
-  //  $("#close-butt").css( 'padding', '10px 10px')
   $("#close-butt").css( 'font-size', '20px')
   $("#close-butt").css( 'color', 'gold')
   $("#close-butt").css( 'border-radius', '4px')
@@ -371,11 +352,8 @@ $("#close-butt").css( 'background-color', 'blue')
   $("#close-butt").css( 'right', '67%')
   $("#close-butt").css( 'transform', 'translate(-50%, -50%')
    $("#close-butt").css( 'margin', 'auto')
-  //  $("#close-butt").css( 'width', '5%')
-  //  $("#close-butt").css( 'padding', '8px 8px 8px 8px')
 
 
-//closes the profile window
 $('#close-butt').on('click', function(){
  $("#user-profile").remove();
  $("#twidSpace").show();
@@ -391,8 +369,6 @@ $('#close-butt').on('click', function(){
 
 
 
-///////////////////////////////////////
-//YOUR OWN USER PROFILE STYLING
 $('#user-profile').css( 'background-color', 'purple')
 $('#user-profile').css( 'border', '1px solid #DDDDDD')
 $('#user-profile').css( 'border-radius', '4px 4px 4px 4px')
@@ -407,19 +383,15 @@ $('#user-profile').css( 'margin', 'auto')
 $('#user-profile').css( 'width', '500px')
 
 
-////////////////////////////////////////////
-//ATTACHING TO USER PROFILE
-
 let $userName = $(".youser-name").clone()
 
 let $twidClone = $(".your-string").clone()
-//console.log(".YOUsername", $(".youser-name"))
 
 let $timeClone = $(".tweet-time").clone()
 
 $("#user-profile").append($($userName))
 
-//console.log("#USER PROFILE", $("#user-profile"))
+
 $("#user-profile").append($($twidClone))
 $("#user-profile").prepend($($userName))
 
@@ -446,9 +418,9 @@ $($timeClone).css("color", "black")
 let $thisMoment = $(".this-moment")
 
 
-// $(".current-time").hide()
 
-console.log(moment(), Date.parse($thisMoment[0].innerText))
+
+
 
 
 setInterval(function updateTimes (){
